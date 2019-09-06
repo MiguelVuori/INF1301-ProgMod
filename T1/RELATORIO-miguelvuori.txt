@@ -1,0 +1,5 @@
+Data		Horas Trabalhadas	Tipo Tarefa				Descrição da Tarefa Realizada
+2019-08-26	     2.0 		 Estudar	 			  Aprendendo a usar o arcabouço e fazer as configurações iniciais
+2019-08-28	     1.0		 Estudar	 			  Entender os codigos e pensar no que era deveria ser implementado
+2019-09-29	     1.5		 Codificar módulo			  Codificar a implementação de matrizes
+2019-09-06	     1.0		 Fazendo adições ao script de teste 	  Adicionando testes ao script de teste
