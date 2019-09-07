@@ -2,7 +2,7 @@
 #define MATRIZ_
 /***************************************************************************
 *
-*  $MCD M�dulo de defini��o: M�dulo matriz
+*  $MCD Módulo de definição: Módulo matriz
 *
 *  Arquivo gerado:              MATRIZ.H
 *  Letras identificadoras:      MAT
@@ -14,20 +14,20 @@
 *  Gestor:  DI/PUC-Rio
 *  Autores: avs - Arndt von Staa
 *
-*  $HA Hist�rico de evolu��o:
-*     Vers�o  Autor    Data     Observa��es
-*       3.00   avs   28/02/2003 Uniformiza��o da interface das fun��es e
-*                               de todas as condi��es de retorno.
-*       2.00   avs   03/08/2002 Elimina��o de c�digo duplicado, reestrutura��o
-*       1.00   avs   15/08/2001 In�cio do desenvolvimento
+*  $HA Histórico de evolução:
+*     Vers�o  Autor    Data     Observações
+*       3.00   avs   28/02/2003 Uniformização da interface das funções e
+*                               de todas as condições de retorno.
+*       2.00   avs   03/08/2002 Eliminação de código duplicado, reestrutura��o
+*       1.00   avs   15/08/2001 Início do desenvolvimento
 *
-*  $ED Descri��o do m�dulo
-*     Este m�dulo implementa um conjunto simples de fun��es para criar e
+*  $ED Descrição do módulo
+*     Este módulo implementa um conjunto simples de funções para criar e
 *     explorar matrizes n x n.
-*     A matriz possui uma cabe�a que cont�m uma refer�ncia para o n� 0 x 0 da
-*     matriz e outra para um n� corrente da matriz.
-*     A cada momento o m�dulo admite no m�ximo uma �nica matriz.
-*     Ao iniciar a execu��o do programa n�o existe matriz.
+*     A matriz possui uma cabeça que contém uma referência para o nó 0 x 0 da
+*     matriz e outra para um nó corrente da matriz.
+*     A cada momento o módulo admite no máximo uma única matriz.
+*     Ao iniciar a execução do programa não existe matriz.
 *
 ***************************************************************************/
  
@@ -51,13 +51,13 @@
                /* Executou correto */
 
          MAT_CondRetErroEstrutura = 1 ,
-               /* Estrutura da matriz est� errada */
+               /* Estrutura da matriz está errada */
 
          MAT_CondRetMatrizNaoExiste = 2 ,
-               /* Matriz n�o existe */
+               /* Matriz não existe */
 
          MAT_CondRetMatrizVazia = 3 ,
-               /* Matriz est� vazia */
+               /* Matriz está vazia */
 
          MAT_CondRetNaoPossuiNo = 4 ,
                /* No corrente não possui nó na direção desejada */
@@ -69,7 +69,7 @@
 
 /***********************************************************************
 *
-*  $TC Tipo de dados: ARV Descritor da cabeça de uma árvore
+*  $TC Tipo de dados: MAT Descritor da cabeça de uma matriz
 *
 *
 ***********************************************************************/
@@ -78,15 +78,15 @@
 
 /***********************************************************************
 *
-*  $FC Fun��o: MAT Criar matriz
+*  $FC Função: MAT Criar matriz
 *
 *  $EP Parâmetros
 *     $P pMatriz - endereço do ponteiro para a cabeça da árvore a ser manipulada.
 *	  $P n - dimensão da matriz
 *
-*  $ED Descri��o da fun��o
+*  $ED Descrição da função
 *     Cria uma nova matriz n x n.
-*     Caso j� exista uma matriz, esta ser� destru�da.
+*     Caso já exista uma matriz, esta será destruída.
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
@@ -99,14 +99,14 @@
 
 /***********************************************************************
 *
-*  $FC Fun��o: MAT Destruir matriz
+*  $FC Função: MAT Destruir matriz
 *
 *  $EP Parâmetros
 *    $P pArvore - endereço do ponteiro para a cabeça da matriz a ser manipulada.
 *
-*  $ED Descri��o da fun��o
-*     Destr�i o corpo e a cabe�a da matriz, anulando a matriz corrente.
-*     Faz nada caso a matriz corrente n�o exista.
+*  $ED Descrição da função
+*     Destrói o corpo e a cabeça da matriz, anulando a matriz corrente.
+*     Faz nada caso a matriz corrente não exista.
 *
 ***********************************************************************/
 
@@ -115,7 +115,7 @@
 
 /***********************************************************************
 *
-*  $FC Fun��o: MAT Ir para n� Oeste
+*  $FC Função: MAT Ir para nó Oeste
 *
 *  $EP Parâmetros
 *     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
@@ -124,7 +124,7 @@
 *     ARV_CondRetOK
 *     ARV_CondRetMatrizNaoExiste
 *     ARV_CondRetMatrizVazia
-*     ARV_CondRetNaoPossuiNo   - n� corrente n�o possui n� � oeste
+*     ARV_CondRetNaoPossuiNo   - nó corrente não possui nó á oeste
 *
 ***********************************************************************/
 
@@ -133,7 +133,7 @@
 
 /***********************************************************************
 *
-*  $FC Fun��o: MAT Ir para n� Norte
+*  $FC Função: MAT Ir para nó Norte
 *
 *  $EP Parâmetros
 *     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
@@ -142,7 +142,7 @@
 *     ARV_CondRetOK
 *     ARV_CondRetMatrizNaoExiste
 *     ARV_CondRetMatrizVazia
-*     ARV_CondRetNaoPossuiNo   - n� corrente n�o possui n� � oeste
+*     ARV_CondRetNaoPossuiNo   - nó corrente não possui nó á norte
 *
 ***********************************************************************/
 
@@ -151,7 +151,7 @@
 
 /***********************************************************************
 *
-*  $FC Fun��o: MAT Ir para n� Leste
+*  $FC Função: MAT Ir para nó Leste
 *
 *  $EP Parâmetros
 *     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
@@ -160,7 +160,7 @@
 *     ARV_CondRetOK
 *     ARV_CondRetMatrizNaoExiste
 *     ARV_CondRetMatrizVazia
-*     ARV_CondRetNaoPossuiNo   - n� corrente n�o possui n� � leste
+*     ARV_CondRetNaoPossuiNo   - nó corrente não possui nó á leste
 *
 ***********************************************************************/
 
@@ -169,7 +169,7 @@
 
 /***********************************************************************
 *
-*  $FC Fun��o: MAT Ir para n� Sul
+*  $FC Função: MAT Ir para nó Sul
 *
 *  $EP Parâmetros
 *     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
@@ -178,7 +178,7 @@
 *     MAT_CondRetOK
 *     MAT_CondRetMatrizNaoExiste
 *     MAT_CondRetMatrizVazia
-*     MAT_CondRetNaoPossuiNo  - n� corrente n�o possui n� � esquerda
+*     MAT_CondRetNaoPossuiNo  - nó corrente não possui nó á sul
 *
 ***********************************************************************/
 
@@ -187,7 +187,7 @@
 
 /***********************************************************************
 *
-*  $FC Fun��o: MAT Ir para n� Sudoeste
+*  $FC Função: MAT Ir para nó Sudoeste
 *
 *  $EP Parâmetros
 *     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
@@ -196,7 +196,7 @@
 *     MAT_CondRetOK
 *     MAT_CondRetMatrizNaoExiste
 *     MAT_CondRetMatrizVazia
-*     MAT_CondRetNaoPossuiNo   - n� corrente n�o possui n� � sudoeste
+*     MAT_CondRetNaoPossuiNo   - nó corrente não possui nó á sudoeste
 *
 ***********************************************************************/
 
@@ -204,7 +204,7 @@
 
 /***********************************************************************
 *
-*  $FC Fun��o: MAT Ir para n� Noroeste
+*  $FC Função: MAT Ir para nó Noroeste
 *
 *  $EP Parâmetros
 *     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
@@ -213,7 +213,7 @@
 *     MAT_CondRetOK
 *     MAT_CondRetMatrizNaoExiste
 *     MAT_CondRetMatrizVazia
-*     MAT_CondRetNaoPossuiNo   - n� corrente n�o possui n� � Noroeste
+*     MAT_CondRetNaoPossuiNo   - nó corrente não possui nó á Noroeste
 *
 ***********************************************************************/
 
@@ -221,7 +221,7 @@
 
 /***********************************************************************
 *
-*  $FC Fun��o: MAT Ir para n� Nordeste
+*  $FC Função: MAT Ir para nó Nordeste
 *
 *  $EP Parâmetros
 *     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
@@ -230,7 +230,7 @@
 *     MAT_CondRetOK
 *     MAT_CondRetMatrizNaoExiste
 *     MAT_CondRetArvoreVazia
-*     MAT_CondRetNaoPossuiNo   - n� corrente n�o possui n� � Nordeste
+*     MAT_CondRetNaoPossuiNo   - nó corrente não possui nó á Nordeste
 *
 ***********************************************************************/
 
@@ -238,7 +238,7 @@
 
 /***********************************************************************
 *
-*  $FC Fun��o: MAT Ir para n� Sudeste
+*  $FC Função: MAT Ir para nó Sudeste
 *
 *  $EP Parâmetros
 *     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
@@ -247,7 +247,7 @@
 *     MAT_CondRetOK
 *     MAT_CondRetMatrizNaoExiste
 *     MAT_CondRetMatrizVazia
-*     MAT_CondRetNaoPossuiNo   - n� corrente n�o possui n� � Sudeste
+*     MAT_CondRetNaoPossuiNo   - nó corrente não possui nó á Sudeste
 *
 ***********************************************************************/
 
@@ -255,11 +255,11 @@
 
 /***********************************************************************
 *
-*  $FC Fun��o: MAT Obter lista corrente
+*  $FC Função: MAT Obter lista corrente
 *
-*  $EP Par�metros
-*     $P ValorParm - � o par�metro que receber� o endere�o da lista contida no n�.
-*                    Este par�metro � passado por refer�ncia.
+*  $EP Parâmetros
+*     $P ValorParm - O parâmetro que receberá o endereço da lista contida no nó.
+*                    Este parâmetro é passado por referência.
 *     $P pArvore - ponteiro para a cabeça da árvore a ser manipulada.
 *
 *  $FV Valor retornado
@@ -273,7 +273,7 @@
 
 #undef MATRIZ_EXT
 
-/********** Fim do m�dulo de defini��o: M�dulo matriz **********/
+/********** Fim do módulo de definição: Módulo matriz **********/
 
 #else
 #endif
