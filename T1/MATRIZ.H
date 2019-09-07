@@ -2,7 +2,7 @@
 #define MATRIZ_
 /***************************************************************************
 *
-*  $MCD Módulo de definição: Módulo matriz
+*  $MCD Mï¿½dulo de definiï¿½ï¿½o: Mï¿½dulo matriz
 *
 *  Arquivo gerado:              MATRIZ.H
 *  Letras identificadoras:      MAT
@@ -14,20 +14,20 @@
 *  Gestor:  DI/PUC-Rio
 *  Autores: avs - Arndt von Staa
 *
-*  $HA Histórico de evolução:
-*     Versão  Autor    Data     Observações
-*       3.00   avs   28/02/2003 Uniformização da interface das funções e
-*                               de todas as condições de retorno.
-*       2.00   avs   03/08/2002 Eliminação de código duplicado, reestruturação
-*       1.00   avs   15/08/2001 Início do desenvolvimento
+*  $HA Histï¿½rico de evoluï¿½ï¿½o:
+*     Versï¿½o  Autor    Data     Observaï¿½ï¿½es
+*       3.00   avs   28/02/2003 Uniformizaï¿½ï¿½o da interface das funï¿½ï¿½es e
+*                               de todas as condiï¿½ï¿½es de retorno.
+*       2.00   avs   03/08/2002 Eliminaï¿½ï¿½o de cï¿½digo duplicado, reestruturaï¿½ï¿½o
+*       1.00   avs   15/08/2001 Inï¿½cio do desenvolvimento
 *
-*  $ED Descrição do módulo
-*     Este módulo implementa um conjunto simples de funções para criar e
+*  $ED Descriï¿½ï¿½o do mï¿½dulo
+*     Este mï¿½dulo implementa um conjunto simples de funï¿½ï¿½es para criar e
 *     explorar matrizes n x n.
-*     A matriz possui uma cabeça que contém uma referência para o nó 0 x 0 da
-*     matriz e outra para um nó corrente da matriz.
-*     A cada momento o módulo admite no máximo uma única matriz.
-*     Ao iniciar a execução do programa não existe matriz.
+*     A matriz possui uma cabeï¿½a que contï¿½m uma referï¿½ncia para o nï¿½ 0 x 0 da
+*     matriz e outra para um nï¿½ corrente da matriz.
+*     A cada momento o mï¿½dulo admite no mï¿½ximo uma ï¿½nica matriz.
+*     Ao iniciar a execuï¿½ï¿½o do programa nï¿½o existe matriz.
 *
 ***************************************************************************/
  
@@ -51,30 +51,38 @@
                /* Executou correto */
 
          MAT_CondRetErroEstrutura = 1 ,
-               /* Estrutura da matriz está errada */
+               /* Estrutura da matriz estï¿½ errada */
 
          MAT_CondRetMatrizNaoExiste = 2 ,
-               /* Matriz não existe */
+               /* Matriz nï¿½o existe */
 
          MAT_CondRetMatrizVazia = 3 ,
-               /* Matriz está vazia */
+               /* Matriz estï¿½ vazia */
 
          MAT_CondRetNaoPossuiNo = 4 ,
-               /* Nó corrente não possui nó na direção desejada */
+               /* Nï¿½ corrente nï¿½o possui nï¿½ na direï¿½ï¿½o desejada */
 
          MAT_CondRetFaltouMemoria = 5
-               /* Faltou memória ao alocar dados */
+               /* Faltou memï¿½ria ao alocar dados */
 
    } MAT_tpCondRet ;
 
+/***********************************************************************
+*
+*  $TC Tipo de dados: ARV Descritor da cabeÃ§a de uma Ã¡rvore
+*
+*
+***********************************************************************/
+
+   typedef struct tgMatriz tpMatriz;
 
 /***********************************************************************
 *
-*  $FC Função: MAT Criar matriz
+*  $FC Funï¿½ï¿½o: MAT Criar matriz
 *
-*  $ED Descrição da função
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
 *     Cria uma nova matriz n x n.
-*     Caso já exista uma matriz, esta será destruída.
+*     Caso jï¿½ exista uma matriz, esta serï¿½ destruï¿½da.
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
@@ -87,11 +95,11 @@
 
 /***********************************************************************
 *
-*  $FC Função: MAT Destruir matriz
+*  $FC Funï¿½ï¿½o: MAT Destruir matriz
 *
-*  $ED Descrição da função
-*     Destrói o corpo e a cabeça da árvore, anulando a árvore corrente.
-*     Faz nada caso a árvore corrente não exista.
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*     Destrï¿½i o corpo e a cabeï¿½a da ï¿½rvore, anulando a ï¿½rvore corrente.
+*     Faz nada caso a ï¿½rvore corrente nï¿½o exista.
 *
 ***********************************************************************/
 
@@ -100,14 +108,14 @@
 
 /***********************************************************************
 *
-*  $FC Função: MAT Ir para nó Oeste
+*  $FC Funï¿½ï¿½o: MAT Ir para nï¿½ Oeste
 *
 *
 *  $FV Valor retornado
 *     ARV_CondRetOK
 *     ARV_CondRetMatrizNaoExiste
 *     ARV_CondRetMatrizVazia
-*     ARV_CondRetNaoPossuiNo   - nó corrente não possui nó à oeste
+*     ARV_CondRetNaoPossuiNo   - nï¿½ corrente nï¿½o possui nï¿½ ï¿½ oeste
 *
 ***********************************************************************/
 
@@ -116,14 +124,14 @@
 
 /***********************************************************************
 *
-*  $FC Função: MAT Ir para nó Norte
+*  $FC Funï¿½ï¿½o: MAT Ir para nï¿½ Norte
 *
 *
 *  $FV Valor retornado
 *     ARV_CondRetOK
 *     ARV_CondRetMatrizNaoExiste
 *     ARV_CondRetMatrizVazia
-*     ARV_CondRetNaoPossuiNo   - nó corrente não possui nó à oeste
+*     ARV_CondRetNaoPossuiNo   - nï¿½ corrente nï¿½o possui nï¿½ ï¿½ oeste
 *
 ***********************************************************************/
 
@@ -132,14 +140,14 @@
 
 /***********************************************************************
 *
-*  $FC Função: MAT Ir para nó Leste
+*  $FC Funï¿½ï¿½o: MAT Ir para nï¿½ Leste
 *
 *
 *  $FV Valor retornado
 *     ARV_CondRetOK
 *     ARV_CondRetMatrizNaoExiste
 *     ARV_CondRetMatrizVazia
-*     ARV_CondRetNaoPossuiNo   - nó corrente não possui nó à leste
+*     ARV_CondRetNaoPossuiNo   - nï¿½ corrente nï¿½o possui nï¿½ ï¿½ leste
 *
 ***********************************************************************/
 
@@ -148,13 +156,13 @@
 
 /***********************************************************************
 *
-*  $FC Função: MAT Ir para nó Sul
+*  $FC Funï¿½ï¿½o: MAT Ir para nï¿½ Sul
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
 *     MAT_CondRetMatrizNaoExiste
 *     MAT_CondRetMatrizVazia
-*     MAT_CondRetNaoPossuiNo  - nó corrente não possui nó à esquerda
+*     MAT_CondRetNaoPossuiNo  - nï¿½ corrente nï¿½o possui nï¿½ ï¿½ esquerda
 *
 ***********************************************************************/
 
@@ -163,13 +171,13 @@
 
 /***********************************************************************
 *
-*  $FC Função: MAT Ir para nó Sudoeste
+*  $FC Funï¿½ï¿½o: MAT Ir para nï¿½ Sudoeste
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
 *     MAT_CondRetMatrizNaoExiste
 *     MAT_CondRetMatrizVazia
-*     MAT_CondRetNaoPossuiNo   - nó corrente não possui nó à sudoeste
+*     MAT_CondRetNaoPossuiNo   - nï¿½ corrente nï¿½o possui nï¿½ ï¿½ sudoeste
 *
 ***********************************************************************/
 
@@ -177,13 +185,13 @@
 
 /***********************************************************************
 *
-*  $FC Função: MAT Ir para nó Noroeste
+*  $FC Funï¿½ï¿½o: MAT Ir para nï¿½ Noroeste
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
 *     MAT_CondRetMatrizNaoExiste
 *     MAT_CondRetMatrizVazia
-*     MAT_CondRetNaoPossuiNo   - nó corrente não possui nó à Noroeste
+*     MAT_CondRetNaoPossuiNo   - nï¿½ corrente nï¿½o possui nï¿½ ï¿½ Noroeste
 *
 ***********************************************************************/
 
@@ -191,13 +199,13 @@
 
 /***********************************************************************
 *
-*  $FC Função: MAT Ir para nó Nordeste
+*  $FC Funï¿½ï¿½o: MAT Ir para nï¿½ Nordeste
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
 *     MAT_CondRetMatrizNaoExiste
 *     MAT_CondRetArvoreVazia
-*     MAT_CondRetNaoPossuiNo   - nó corrente não possui nó à Nordeste
+*     MAT_CondRetNaoPossuiNo   - nï¿½ corrente nï¿½o possui nï¿½ ï¿½ Nordeste
 *
 ***********************************************************************/
 
@@ -205,13 +213,13 @@
 
 /***********************************************************************
 *
-*  $FC Função: MAT Ir para nó Sudeste
+*  $FC Funï¿½ï¿½o: MAT Ir para nï¿½ Sudeste
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
 *     MAT_CondRetMatrizNaoExiste
 *     MAT_CondRetMatrizVazia
-*     MAT_CondRetNaoPossuiNo   - nó corrente não possui nó à Sudeste
+*     MAT_CondRetNaoPossuiNo   - nï¿½ corrente nï¿½o possui nï¿½ ï¿½ Sudeste
 *
 ***********************************************************************/
 
@@ -219,11 +227,11 @@
 
 /***********************************************************************
 *
-*  $FC Função: MAT Obter lista corrente
+*  $FC Funï¿½ï¿½o: MAT Obter lista corrente
 *
-*  $EP Parâmetros
-*     $P ValorParm - é o parâmetro que receberá o endereço da lista contida no nó.
-*                    Este parâmetro é passado por referência.
+*  $EP Parï¿½metros
+*     $P ValorParm - ï¿½ o parï¿½metro que receberï¿½ o endereï¿½o da lista contida no nï¿½.
+*                    Este parï¿½metro ï¿½ passado por referï¿½ncia.
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
@@ -236,7 +244,7 @@
 
 #undef MATRIZ_EXT
 
-/********** Fim do módulo de definição: Módulo matriz **********/
+/********** Fim do mï¿½dulo de definiï¿½ï¿½o: Mï¿½dulo matriz **********/
 
 #else
 #endif

@@ -1,5 +1,5 @@
 /***************************************************************************
-*  $MCI Módulo de implementação: Módulo de teste específico
+*  $MCI Mï¿½dulo de implementaï¿½ï¿½o: Mï¿½dulo de teste especï¿½fico
 *
 *  Arquivo gerado:              TESTARV.C
 *  Letras identificadoras:      TARV
@@ -11,33 +11,33 @@
 *  Gestor:  DI/PUC-Rio
 *  Autores: avs - Arndt von Staa
 *
-*  $HA Histórico de evolução:
-*     Versão  Autor    Data     Observações
-*       3.00   avs   28/02/2003 Uniformização da interface das funções e
-*                               de todas as condições de retorno.
-*       2.00   avs   03/08/2002 Eliminação de código duplicado, reestruturação
-*       1.00   avs   15/08/2001 Início do desenvolvimento
+*  $HA Histï¿½rico de evoluï¿½ï¿½o:
+*     Versï¿½o  Autor    Data     Observaï¿½ï¿½es
+*       3.00   avs   28/02/2003 Uniformizaï¿½ï¿½o da interface das funï¿½ï¿½es e
+*                               de todas as condiï¿½ï¿½es de retorno.
+*       2.00   avs   03/08/2002 Eliminaï¿½ï¿½o de cï¿½digo duplicado, reestruturaï¿½ï¿½o
+*       1.00   avs   15/08/2001 Inï¿½cio do desenvolvimento
 *
-*  $ED Descrição do módulo
-*     Este mÇodulo contém as funções específicas para o teste do
-*     módulo árvore. Ilustra como redigir um interpretador de comandos
-*     de teste específicos utilizando o arcabouço de teste para C.
+*  $ED Descriï¿½ï¿½o do mï¿½dulo
+*     Este mï¿½odulo contï¿½m as funï¿½ï¿½es especï¿½ficas para o teste do
+*     mï¿½dulo ï¿½rvore. Ilustra como redigir um interpretador de comandos
+*     de teste especï¿½ficos utilizando o arcabouï¿½o de teste para C.
 *
-*  $EIU Interface com o usuário pessoa
-*     Comandos de teste específicos para testar o módulo árvore:
+*  $EIU Interface com o usuï¿½rio pessoa
+*     Comandos de teste especï¿½ficos para testar o mï¿½dulo ï¿½rvore:
 *
-*     =criar        - chama a função MAT_CriarMatriz( )
-*     "=irnorte"	- chama a função MAT_IrNoNorte( )
-*     "=irsul"		- chama a função MAT_IrNoSul( )
-*     "=iroest"		- chama a função MAT_IrNoOeste( )
-*     "=itleste"	- chama a função MAT_IrNoLeste( )
-*     "=irsudoe"	- chama a função MAT_IrNoSudoeste( )
-*     "=irnoroe"	- chama a função MAT_IrNoNoroeste( )
-*     "=irnorde"	- chama a função MAT_IrNoNordeste( )
+*     =criar        - chama a funï¿½ï¿½o MAT_CriarMatriz( )
+*     "=irnorte"	- chama a funï¿½ï¿½o MAT_IrNoNorte( )
+*     "=irsul"		- chama a funï¿½ï¿½o MAT_IrNoSul( )
+*     "=iroest"		- chama a funï¿½ï¿½o MAT_IrNoOeste( )
+*     "=itleste"	- chama a funï¿½ï¿½o MAT_IrNoLeste( )
+*     "=irsudoe"	- chama a funï¿½ï¿½o MAT_IrNoSudoeste( )
+*     "=irnoroe"	- chama a funï¿½ï¿½o MAT_IrNoNoroeste( )
+*     "=irnorde"	- chama a funï¿½ï¿½o MAT_IrNoNordeste( )
 *     "=obter" <Char>
-*                   - chama a função MAT_ObterListaCorr( ) e compara
+*                   - chama a funï¿½ï¿½o MAT_ObterListaCorr( ) e compara
 *                     o valor retornado com o valor <Char>
-*     "=destroi"    - chama a função MAT_DestruirArvore( )
+*     "=destroi"    - chama a funï¿½ï¿½o MAT_DestruirArvore( )
 *
 ***************************************************************************/
 
@@ -51,7 +51,7 @@
 
 #include    "MATRIZ.h"
 
-/* Tabela dos nomes dos comandos de teste específicos */
+/* Tabela dos nomes dos comandos de teste especï¿½ficos */
 
 #define     CRIAR_MAT_CMD       "=criar"
 #define     IR_NORTE_CMD        "=irnorte"
@@ -65,18 +65,26 @@
 #define     OBTER_VAL_CMD       "=obter"
 #define     DESTROI_CMD         "=destruir"
 
-/*****  Código das funções exportadas pelo módulo  *****/
+/***** Dados encapsulados no mÃ³dulo *****/
+
+static tpMatriz * pMatriz[] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL } ;
+					/* Array de ponteiros para as cabecas das matrizes */
+
+static char matAtual = 0; /* 0 a 9, testa atÃ© 10 matrizes simultÃ¢neas */
+
+
+/*****  Cï¿½digo das funï¿½ï¿½es exportadas pelo mï¿½dulo  *****/
 
 
 /***********************************************************************
 *
-*  $FC Função: TARV Efetuar operações de teste específicas para árvore
+*  $FC Funï¿½ï¿½o: TMAT Efetuar operaï¿½ï¿½es de teste especï¿½ficas para ï¿½rvore
 *
-*  $ED Descrição da função
-*     Efetua os diversos comandos de teste específicos para o módulo
-*     árvore sendo testado.
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*     Efetua os diversos comandos de teste especï¿½ficos para o mï¿½dulo
+*     ï¿½rvore sendo testado.
 *
-*  $EP Parâmetros
+*  $EP Parï¿½metros
 *     $P ComandoTeste - String contendo o comando
 *
 *  $FV Valor retornado
@@ -99,7 +107,7 @@
 
       TST_tpCondRet Ret ;
 
-      /* Testar ARV Criar árvore */
+      /* Testar ARV Criar ï¿½rvore */
 
          if ( strcmp( ComandoTeste , CRIAR_MAT_CMD ) == 0 )
          {
@@ -114,9 +122,9 @@
             CondRetObtido = ARV_CriarArvore( ) ;
 
             return TST_CompararInt( CondRetEsperada , CondRetObtido ,
-                                    "Retorno errado ao criar árvore." );
+                                    "Retorno errado ao criar ï¿½rvore." );
 
-         } /* fim ativa: Testar ARV Criar árvore */
+         } /* fim ativa: Testar ARV Criar ï¿½rvore */
 
 
       /* Testar MAT Ir para Norte */
@@ -304,7 +312,7 @@
             } /* if */
 
             return TST_CompararChar( ValorEsperado , ValorObtido ,
-                                     "Conteúdo do nó está errado." ) ;
+                                     "Conteï¿½do do nï¿½ estï¿½ errado." ) ;
 
          } /* fim ativa: Testar MAT Obter valor corrente */
 
@@ -317,11 +325,11 @@
 
             return TST_CondRetOK ;
 
-         } /* fim ativa: Testar ARV Destruir árvore */
+         } /* fim ativa: Testar ARV Destruir ï¿½rvore */
 
       return TST_CondRetNaoConhec ;
 
-   } /* Fim função: TARV Efetuar operações de teste específicas para árvore */
+   } /* Fim funï¿½ï¿½o: TARV Efetuar operaï¿½ï¿½es de teste especï¿½ficas para ï¿½rvore */
 
-/********** Fim do módulo de implementação: Módulo de teste específico **********/
+/********** Fim do mï¿½dulo de implementaï¿½ï¿½o: Mï¿½dulo de teste especï¿½fico **********/
 
