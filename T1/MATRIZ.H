@@ -60,10 +60,10 @@
                /* Matriz est� vazia */
 
          MAT_CondRetNaoPossuiNo = 4 ,
-               /* N� corrente n�o possui n� na dire��o desejada */
+               /* No corrente não possui nó na direção desejada */
 
          MAT_CondRetFaltouMemoria = 5
-               /* Faltou mem�ria ao alocar dados */
+               /* Faltou memória ao alocar dados */
 
    } MAT_tpCondRet ;
 
@@ -80,6 +80,10 @@
 *
 *  $FC Fun��o: MAT Criar matriz
 *
+*  $EP Parâmetros
+*     $P pMatriz - endereço do ponteiro para a cabeça da árvore a ser manipulada.
+*	  $P n - dimensão da matriz
+*
 *  $ED Descri��o da fun��o
 *     Cria uma nova matriz n x n.
 *     Caso j� exista uma matriz, esta ser� destru�da.
@@ -90,26 +94,31 @@
 *
 ***********************************************************************/
 
-   MAT_tpCondRet MAT_CriarMatriz( int n ) ;
+   MAT_tpCondRet MAT_CriarMatriz( int n , tpMatriz ** pMatriz) ;
 
 
 /***********************************************************************
 *
 *  $FC Fun��o: MAT Destruir matriz
 *
+*  $EP Parâmetros
+*    $P pArvore - endereço do ponteiro para a cabeça da matriz a ser manipulada.
+*
 *  $ED Descri��o da fun��o
-*     Destr�i o corpo e a cabe�a da �rvore, anulando a �rvore corrente.
-*     Faz nada caso a �rvore corrente n�o exista.
+*     Destr�i o corpo e a cabe�a da matriz, anulando a matriz corrente.
+*     Faz nada caso a matriz corrente n�o exista.
 *
 ***********************************************************************/
 
-   void MAT_DestruirMatriz( void ) ;
+   void MAT_DestruirMatriz( tpMatriz ** pMatriz ) ;
 
 
 /***********************************************************************
 *
 *  $FC Fun��o: MAT Ir para n� Oeste
 *
+*  $EP Parâmetros
+*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
 *
 *  $FV Valor retornado
 *     ARV_CondRetOK
@@ -119,13 +128,15 @@
 *
 ***********************************************************************/
 
-		MAT_tpCondRet MAT_IrNoOeste( void ) ;
+	MAT_tpCondRet MAT_IrNoOeste( tpMatriz * pMatriz ) ;
 
 
 /***********************************************************************
 *
 *  $FC Fun��o: MAT Ir para n� Norte
 *
+*  $EP Parâmetros
+*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
 *
 *  $FV Valor retornado
 *     ARV_CondRetOK
@@ -135,13 +146,15 @@
 *
 ***********************************************************************/
 
-   MAT_tpCondRet MAT_IrNoNorte( void ) ;
+   MAT_tpCondRet MAT_IrNoNorte( tpMatriz * pMatriz ) ;
 
 
 /***********************************************************************
 *
 *  $FC Fun��o: MAT Ir para n� Leste
 *
+*  $EP Parâmetros
+*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
 *
 *  $FV Valor retornado
 *     ARV_CondRetOK
@@ -151,12 +164,15 @@
 *
 ***********************************************************************/
 
-   MAT_tpCondRet MAT_IrNoLeste( void ) ;
+   MAT_tpCondRet MAT_IrNoLeste( tpMatriz * pMatriz ) ;
 
 
 /***********************************************************************
 *
 *  $FC Fun��o: MAT Ir para n� Sul
+*
+*  $EP Parâmetros
+*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
@@ -166,12 +182,15 @@
 *
 ***********************************************************************/
 
-   MAT_tpCondRet MAT_IrNoSul( void ) ;
+   MAT_tpCondRet MAT_IrNoSul( tpMatriz * pMatriz ) ;
 
 
 /***********************************************************************
 *
 *  $FC Fun��o: MAT Ir para n� Sudoeste
+*
+*  $EP Parâmetros
+*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
@@ -181,11 +200,14 @@
 *
 ***********************************************************************/
 
-   MAT_tpCondRet MAT_IrNoSudoeste( void ) ;
+   MAT_tpCondRet MAT_IrNoSudoeste( tpMatriz * pMatriz ) ;
 
 /***********************************************************************
 *
 *  $FC Fun��o: MAT Ir para n� Noroeste
+*
+*  $EP Parâmetros
+*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
@@ -195,11 +217,14 @@
 *
 ***********************************************************************/
 
-   MAT_tpCondRet MAT_IrNoNoroeste( void ) ;
+   MAT_tpCondRet MAT_IrNoNoroeste( tpMatriz * pMatriz ) ;
 
 /***********************************************************************
 *
 *  $FC Fun��o: MAT Ir para n� Nordeste
+*
+*  $EP Parâmetros
+*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
@@ -209,11 +234,14 @@
 *
 ***********************************************************************/
 
-   MAT_tpCondRet MAT_IrNoNordeste( void ) ;
+   MAT_tpCondRet MAT_IrNoNordeste( tpMatriz * pMatriz ) ;
 
 /***********************************************************************
 *
 *  $FC Fun��o: MAT Ir para n� Sudeste
+*
+*  $EP Parâmetros
+*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
@@ -223,7 +251,7 @@
 *
 ***********************************************************************/
 
-   MAT_tpCondRet MAT_IrNoSudeste( void ) ;
+   MAT_tpCondRet MAT_IrNoSudeste( tpMatriz * pMatriz ) ;
 
 /***********************************************************************
 *
@@ -232,6 +260,7 @@
 *  $EP Par�metros
 *     $P ValorParm - � o par�metro que receber� o endere�o da lista contida no n�.
 *                    Este par�metro � passado por refer�ncia.
+*     $P pArvore - ponteiro para a cabeça da árvore a ser manipulada.
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
