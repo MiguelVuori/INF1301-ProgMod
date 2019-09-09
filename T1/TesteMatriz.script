@@ -16,9 +16,7 @@
 
 == Ir para no norte, nao tem
 =irnorte      6
-  
-== Inserir � esquerda
-=insesq     'b'   0
+
 
 == Obter o valor inserido
 =obter      'b'   0
@@ -27,9 +25,6 @@
 =irnorte      0
 =obter      'a'   0
 
-== Inserir � direita
-=insdir     'c'   0
-=obter      'c'   0
 
 == Ir para no norte
 =irnorte      0
