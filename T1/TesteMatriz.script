@@ -1,0 +1,57 @@
+// Script:    TesteMatriz.script
+// Autor:     Sol Castilho Araújo de Moraes Sêda
+// Data:      08/09/2019
+// Propósito: Testar todas as funções do modulo Matriz
+
+== Verificar ObterValorCorr relativo a Matriz inexistente
+=obter      '!'   4
+
+== Criar Matriz
+=criar      0   0
+=irdir      5
+
+
+== Obter o valor inserido
+=obter      'a'   0
+
+== Ir para no norte, nao tem
+=irnorte      6
+  
+== Inserir � esquerda
+=insesq     'b'   0
+
+== Obter o valor inserido
+=obter      'b'   0
+
+== Ir para no norte, tem
+=irnorte      0
+=obter      'a'   0
+
+== Inserir � direita
+=insdir     'c'   0
+=obter      'c'   0
+
+== Ir para no norte
+=irnorte      0
+=obter      'a'   0
+
+== Ir para no norte
+=irnorte      6
+=obter      'a'   0
+
+== Ir para no esquerda tem
+=iresq      0
+=obter      'b'   0
+
+== Ir para no direita tem
+=irpai      0
+=irdir      0
+=obter      'c'   0
+
+== Destroi a Matriz
+=destruir   
+=irdir      4
+
+
+
+// fim
