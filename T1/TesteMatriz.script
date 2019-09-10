@@ -1,0 +1,72 @@
+// Script: TestaTudo.script
+// Autores: Miguel Fagundes Vuori
+// Data: 02/09/2018
+// Propósito: Testar todas as funções do módulo Matriz, com múltiplas árvores
+//
+
+== Testar criação de duas matrizes (0 e 1)
+=mudar 0
+=criar 0 0
+=mudar 1
+=criar 2 0
+
+== Testar matriz que não existe (usando a matriz 2)
+=mudar 2
+=irpara 1 1 2
+=obter 2
+
+== Verificar que se a matriz 2 for criada, ela funciona como matriz
+=mudar 2
+=criar 0
+=irpara 1 1 0
+=criarlista 0
+=insere 0
+=obter 0
+
+== Destruir árvore 2
+=destruir
+
+== Testando inserção de valores na matriz 0 1 e 3
+=mudar 1
+=irpara 0 0 0
+=criarlista 0
+=insere 0
+=irpara 1 1 0
+=criarlista 0
+=insere 0
+=irpara 1 0 0
+=criarlista 0
+=insere 0
+=irpara 0 1 0
+=criarlista 0
+=insere 0
+
+=mudar 0
+=criarlista 0
+=insere 3
+
+=mudar 3
+=criarlista 0
+=insere 2
+
+== Testando caminhamento pelas matriz 1 e 3
+=mudar 1
+=irpara 0 0 0
+=irpara 1 0 0
+=irpara 1 1 0
+=irpara 0 1 0
+=irpara 2 2 4
+=mudar 3
+=irpara 1 1 2
+
+
+== Testando a obtenção dos valores
+=mudar 1
+=irpara 0 0 0
+=obter 0
+=mudar 0
+=obter 3
+=mudar 3
+=obter 2
+
+
