@@ -134,10 +134,10 @@
 		 int dimensao;
 		      /* Guarda a dimensão n da matriz quadrada n x n */
 
-		 int CoorI;
+		 int i;
 		      /* Guarda a coordanada longitudinal do nó apontado por pNoCorr na matriz */
 
-		 int CoorJ;
+		 int j;
 		      /* Guarda a coordenada latitudinal do nó apontado por pNoCorr na matriz */
 
    } tpMatriz ;
@@ -299,8 +299,8 @@
 			   }
 			   pNoMatriz->pNoE->pNoSO = NULL;
 			   pNoMatriz->pNoE->pNoS = NULL;
-			   (*pMatriz)->CoorI = 1;
-			   (*pMatriz)->CoorJ = 1;
+			   (*pMatriz)->i = 1;
+			   (*pMatriz)->j = 1;
 			   (*pMatriz)->pNoCorr = (*pMatriz)->pNoRaiz;
 		   }
 		   return MAT_CondRetOK;
@@ -339,6 +339,50 @@
 		   free( *pMatriz );
 	   }
   }
+
+MAT_tpCondRet MAT_GoTo( tpMatriz * pMatriz , int i, int j)
+{
+	tpNoMatriz* aux;
+	int difi,difj;
+
+	if ( pMatriz == NULL)
+		return MAT_CondRetMatrizNaoexiste ;
+	if ( i > tpMatriz->dimensao || j > tpMatriz->dimensao )
+		return MAT_CondRetMatrizNaoPossuiNo ;
+	difi = pMatriz->i - i ;
+	difj = pMatriz->j - j ;
+
+	while( difi != 0 )
+	{
+		if( difi < 0)
+		{
+			pMatriz->pNoCorr = pMatriz->pNoCorr->pNoN ;
+			difi++ ;
+		}
+		else
+		{
+			pMatriz->pNoCorr = pMatriz->pNoCorr->pNoS ;
+			difi-- ;
+		}
+	}
+	while( difj != 0 )
+	{
+		if( difj < 0)
+		{
+			pMatriz->pNoCorr = pMatriz->pNoCorr->pNoO ;
+			difj++ ;
+		}
+		else
+		{
+			pMatriz->pNoCorr = pMatriz->pNoCorr->pNoE ;
+			difj-- ;
+		}
+	}
+	pMatriz->j = j ;
+	pMatriz->i = i ;
+	return MAT_CondRetOK ;
+
+}
 MAT_tpCondRet MAT_IrNoOeste( tpMatriz * pMatriz )
 {
 	if ( pMatriz == NULL )
@@ -427,6 +471,7 @@ MAT_tpCondRet MAT_IrNoSudeste( tpMatriz * pMatriz ) ;
 	pMatriz->pNoCorr = pMatriz->pNoCorr->pNoSE;
 	return MAT_CondRetOK;
 }
+
 
 MAT_tpCondRet MAT_ObterListaCorr(  tpMatriz * pMatriz, void ** ValorParm )
 {
