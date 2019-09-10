@@ -1,53 +1,72 @@
-// Script:    TesteMatriz.script
-// Autor:     Sol Castilho Araújo de Moraes Sêda
-// Data:      08/09/2019
-// Propósito: Testar todas as funções do modulo Matriz
+// Script: TestaTudo.script
+// Autores: Miguel Fagundes Vuori
+// Data: 02/09/2018
+// Propósito: Testar todas as funções do módulo Matriz, com múltiplas árvores
+//
 
-== Verificar ObterValorCorr relativo a Matriz inexistente
-=obter      '!'   4
+== Testar criação de duas matrizes (0 e 1)
+=mudar 0
+=criar 0 0
+=mudar 1
+=criar 2 0
 
-== Criar Matriz
-=criar      0   0
-=irdir      5
+== Testar matriz que não existe (usando a matriz 2)
+=mudar 2
+=irpara 1 1 2
+=obter 2
+
+== Verificar que se a matriz 2 for criada, ela funciona como matriz
+=mudar 2
+=criar 0
+=irpara 1 1 0
+=criarlista 0
+=insere 0
+=obter 0
+
+== Destruir árvore 2
+=destruir
+
+== Testando inserção de valores na matriz 0 1 e 3
+=mudar 1
+=irpara 0 0 0
+=criarlista 0
+=insere 0
+=irpara 1 1 0
+=criarlista 0
+=insere 0
+=irpara 1 0 0
+=criarlista 0
+=insere 0
+=irpara 0 1 0
+=criarlista 0
+=insere 0
+
+=mudar 0
+=criarlista 0
+=insere 3
+
+=mudar 3
+=criarlista 0
+=insere 2
+
+== Testando caminhamento pelas matriz 1 e 3
+=mudar 1
+=irpara 0 0 0
+=irpara 1 0 0
+=irpara 1 1 0
+=irpara 0 1 0
+=irpara 2 2 4
+=mudar 3
+=irpara 1 1 2
 
 
-== Obter o valor inserido
-=obter      'a'   0
-
-== Ir para no norte, nao tem
-=irnorte      6
-
-
-
-== Obter o valor inserido
-=obter      'b'   0
-
-== Ir para no norte, tem
-=irnorte      0
-=obter      'a'   0
+== Testando a obtenção dos valores
+=mudar 1
+=irpara 0 0 0
+=obter 0
+=mudar 0
+=obter 3
+=mudar 3
+=obter 2
 
 
-== Ir para no norte
-=irnorte      0
-=obter      'a'   0
-
-== Ir para no norte
-=irnorte      6
-=obter      'a'   0
-
-== Ir para no esquerda tem
-=iresq      0
-=obter      'b'   0
-
-== Ir para no direita tem
-=irpai      0
-=irdir      0
-=obter      'c'   0
-
-== Destroi a Matriz
-=destruir   
-=irdir      4
-
-
-
-// fim
