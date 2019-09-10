@@ -3,3 +3,7 @@ Data		Horas Trabalhadas	Tipo Tarefa				Descrição da Tarefa Realizada
 2019-08-28	     1.0		 Estudar	 			  Entender os codigos e pensar no que era deveria ser implementado
 2019-09-29	     1.5		 Codificar módulo			  Codificar a implementação de matrizes
 2019-09-06	     1.0		 Fazendo adições ao script de teste 	  Adicionando testes ao script de teste
+2019-09-09	     6.0		 Revisar código do módulo		  Deletando e adicionando novas funções de matriz.c
+					 Revisar código do módulo		  Rescrevendo o arquivo TestMat.c
+2019-09-10           4.0                 Redigindo script teste			  Escrevendo o script de teste 
+                                         Revisar código do módulo		  Corrigindo o arquivo TestMat.c
