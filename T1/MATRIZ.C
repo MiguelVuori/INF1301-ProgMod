@@ -340,6 +340,11 @@
 	   }
   }
 
+/***************************************************************************
+*
+*  Função: MAT GoTo
+*  ****/
+
 MAT_tpCondRet MAT_GoTo( tpMatriz * pMatriz , int i, int j)
 {
 	tpNoMatriz* aux;
