@@ -112,6 +112,23 @@
 
    void MAT_DestruirMatriz( tpMatriz ** pMatriz ) ;
 
+/***********************************************************************
+*
+*  $FC Função: MAT Ir para nó ixj
+*
+*  $EP Parâmetros
+*     $P pMatriz - ponteiro para a cabeça da matriz a ser manipulada.
+*	  $P i - número da linha da matriz
+*     $P j - número da coluna da matriz
+*
+*  $FV Valor retornado
+*     ARV_CondRetOK
+*     ARV_CondRetMatrizNaoExiste
+*     ARV_CondRetNaoPossuiNo   - não existe tal nó
+*
+***********************************************************************/
+
+	MAT_tpCondRet MAT_GoTo( tpMatriz * pMatriz, int i, int j ) ;
 
 /***********************************************************************
 *
@@ -269,7 +286,7 @@
 *
 ***********************************************************************/
 
-   MAT_tpCondRet MAT_ObterListaCorr( char ** ValorParm ) ;
+   MAT_tpCondRet MAT_ObterListaCorr( void ** ValorParm ) ;
 
 #undef MATRIZ_EXT
 
