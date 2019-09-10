@@ -12,14 +12,13 @@
 *
 *  Projeto: Disciplinas INF 1628 / 1301
 *  Gestor:  DI/PUC-Rio
-*  Autores: avs - Arndt von Staa
+*  Autores: mfv - Miguel Fagundes Vuori
 *
 *  $HA Histórico de evolução:
-*     Vers�o  Autor    Data     Observações
-*       3.00   avs   28/02/2003 Uniformização da interface das funções e
+*     Versão  Autor    Data     Observações
+*       2.00   mfv   09/09/2019 Uniformização da interface das funções e
 *                               de todas as condições de retorno.
-*       2.00   avs   03/08/2002 Eliminação de código duplicado, reestrutura��o
-*       1.00   avs   15/08/2001 Início do desenvolvimento
+*       1.00   mfv   06/09/2019 Início do desenvolvimento
 *
 *  $ED Descrição do módulo
 *     Este módulo implementa um conjunto simples de funções para criar e
@@ -122,153 +121,13 @@
 *     $P j - número da coluna da matriz
 *
 *  $FV Valor retornado
-*     ARV_CondRetOK
-*     ARV_CondRetMatrizNaoExiste
-*     ARV_CondRetNaoPossuiNo   - não existe tal nó
+*     MAT_CondRetOK
+*     MAT_CondRetMatrizNaoExiste
+*     MAT_CondRetNaoPossuiNo   - não existe tal nó
 *
 ***********************************************************************/
 
 	MAT_tpCondRet MAT_GoTo( tpMatriz * pMatriz, int i, int j ) ;
-
-/***********************************************************************
-*
-*  $FC Função: MAT Ir para nó Oeste
-*
-*  $EP Parâmetros
-*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
-*
-*  $FV Valor retornado
-*     ARV_CondRetOK
-*     ARV_CondRetMatrizNaoExiste
-*     ARV_CondRetMatrizVazia
-*     ARV_CondRetNaoPossuiNo   - nó corrente não possui nó á oeste
-*
-***********************************************************************/
-
-	MAT_tpCondRet MAT_IrNoOeste( tpMatriz * pMatriz ) ;
-
-
-/***********************************************************************
-*
-*  $FC Função: MAT Ir para nó Norte
-*
-*  $EP Parâmetros
-*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
-*
-*  $FV Valor retornado
-*     ARV_CondRetOK
-*     ARV_CondRetMatrizNaoExiste
-*     ARV_CondRetMatrizVazia
-*     ARV_CondRetNaoPossuiNo   - nó corrente não possui nó á norte
-*
-***********************************************************************/
-
-   MAT_tpCondRet MAT_IrNoNorte( tpMatriz * pMatriz ) ;
-
-
-/***********************************************************************
-*
-*  $FC Função: MAT Ir para nó Leste
-*
-*  $EP Parâmetros
-*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
-*
-*  $FV Valor retornado
-*     ARV_CondRetOK
-*     ARV_CondRetMatrizNaoExiste
-*     ARV_CondRetMatrizVazia
-*     ARV_CondRetNaoPossuiNo   - nó corrente não possui nó á leste
-*
-***********************************************************************/
-
-   MAT_tpCondRet MAT_IrNoLeste( tpMatriz * pMatriz ) ;
-
-
-/***********************************************************************
-*
-*  $FC Função: MAT Ir para nó Sul
-*
-*  $EP Parâmetros
-*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
-*
-*  $FV Valor retornado
-*     MAT_CondRetOK
-*     MAT_CondRetMatrizNaoExiste
-*     MAT_CondRetMatrizVazia
-*     MAT_CondRetNaoPossuiNo  - nó corrente não possui nó á sul
-*
-***********************************************************************/
-
-   MAT_tpCondRet MAT_IrNoSul( tpMatriz * pMatriz ) ;
-
-
-/***********************************************************************
-*
-*  $FC Função: MAT Ir para nó Sudoeste
-*
-*  $EP Parâmetros
-*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
-*
-*  $FV Valor retornado
-*     MAT_CondRetOK
-*     MAT_CondRetMatrizNaoExiste
-*     MAT_CondRetMatrizVazia
-*     MAT_CondRetNaoPossuiNo   - nó corrente não possui nó á sudoeste
-*
-***********************************************************************/
-
-   MAT_tpCondRet MAT_IrNoSudoeste( tpMatriz * pMatriz ) ;
-
-/***********************************************************************
-*
-*  $FC Função: MAT Ir para nó Noroeste
-*
-*  $EP Parâmetros
-*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
-*
-*  $FV Valor retornado
-*     MAT_CondRetOK
-*     MAT_CondRetMatrizNaoExiste
-*     MAT_CondRetMatrizVazia
-*     MAT_CondRetNaoPossuiNo   - nó corrente não possui nó á Noroeste
-*
-***********************************************************************/
-
-   MAT_tpCondRet MAT_IrNoNoroeste( tpMatriz * pMatriz ) ;
-
-/***********************************************************************
-*
-*  $FC Função: MAT Ir para nó Nordeste
-*
-*  $EP Parâmetros
-*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
-*
-*  $FV Valor retornado
-*     MAT_CondRetOK
-*     MAT_CondRetMatrizNaoExiste
-*     MAT_CondRetArvoreVazia
-*     MAT_CondRetNaoPossuiNo   - nó corrente não possui nó á Nordeste
-*
-***********************************************************************/
-
-   MAT_tpCondRet MAT_IrNoNordeste( tpMatriz * pMatriz ) ;
-
-/***********************************************************************
-*
-*  $FC Função: MAT Ir para nó Sudeste
-*
-*  $EP Parâmetros
-*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
-*
-*  $FV Valor retornado
-*     MAT_CondRetOK
-*     MAT_CondRetMatrizNaoExiste
-*     MAT_CondRetMatrizVazia
-*     MAT_CondRetNaoPossuiNo   - nó corrente não possui nó á Sudeste
-*
-***********************************************************************/
-
-   MAT_tpCondRet MAT_IrNoSudeste( tpMatriz * pMatriz ) ;
 
 /***********************************************************************
 *
@@ -277,7 +136,7 @@
 *  $EP Parâmetros
 *     $P ValorParm - O parâmetro que receberá o endereço da lista contida no nó.
 *                    Este parâmetro é passado por referência.
-*     $P pArvore - ponteiro para a cabeça da árvore a ser manipulada.
+*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
@@ -287,6 +146,24 @@
 ***********************************************************************/
 
    MAT_tpCondRet MAT_ObterListaCorr( void ** ValorParm ) ;
+
+/***********************************************************************
+*
+*  $FC Função: MAT Insere Lista
+*
+*  $EP Parâmetros
+*     $P ValorParm - O parâmetro que receberá o endereço da lista á ser inserida no nó.
+*                    
+*     $P pMatriz - ponteiro para a cabeça da matriz a ser manipulada.
+*
+*  $FV Valor retornado
+*     MAT_CondRetOK
+*     MAT_CondRetMatrizNaoExiste
+*     MAT_CondRetMatrizVazia
+*
+***********************************************************************/
+
+   MAT_tpCondRet MAT_InsereLista( tpMatriz * pMatriz, void ** ValorParm );
 
 #undef MATRIZ_EXT
 
