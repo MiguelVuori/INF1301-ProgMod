@@ -1,5 +1,5 @@
 /***************************************************************************
-*  $MCI Módulo de implementação: Módulo matriz
+*  $MCI MÃ³dulo de implementaÃ§Ã£o: MÃ³dulo matriz
 *
 *  Arquivo gerado:              MATRIZ.C
 *  Letras identificadoras:      MAT
@@ -11,11 +11,11 @@
 *  Gestor:  DI/PUC-Rio
 *  Autores: mfv - Miguel Fagundes Vuori
 *
-*  $HA Histórico de evolução:
-*     Versão  Autores    Data     Observações
-*       2.00   mfv/   09/09/2019 Uniformização da interface das funções e
-*                               de todas as condições de retorno.
-*       1.00   mfv/   06/09/2019 Início do desenvolvimento
+*  $HA HistÃ³rico de evoluÃ§Ã£o:
+*     VersÃ£o  Autores    Data     ObservaÃ§Ãµes
+*       2.00   mfv/   09/09/2019 UniformizaÃ§Ã£o da interface das funÃ§Ãµes e
+*                               de todas as condiÃ§Ãµes de retorno.
+*       1.00   mfv/   06/09/2019 InÃ­cio do desenvolvimento
 *
 ***************************************************************************/
 
@@ -28,138 +28,136 @@
 
 /***********************************************************************
 *
-*  $TC Tipo de dados: MAT Descritor do nó da matriz
+*  $TC Tipo de dados: MAT Descritor do nÃ³ da matriz
 *
 *
-*  $ED Descrição do tipo
-*     Descreve a organização do nó
+*  $ED DescriÃ§Ã£o do tipo
+*     Descreve a organizaÃ§Ã£o do nÃ³
 *
 ***********************************************************************/
 
    typedef struct tgNoMatriz {
 
          void * conteudo;
-               /* Conteúdo do nó corrente em formato de ponteiro
+               /* ConteÃºdo do nÃ³ corrente em formato de ponteiro
                *
                *$EED Assertivas estruturais
-               *   O conteúdo do nó é tratado como um ponteiro para uma posição de memória
+               *   O conteÃºdo do nÃ³ Ã© tratado como um ponteiro para uma posiÃ§Ã£o de memÃ³ria
                *   */
 
          struct tgNoMatriz * pNoNE ;
-               /* Ponteiro para o nó a nordeste
+               /* Ponteiro para o nÃ³ a nordeste
                *
                *$EED Assertivas estruturais
-               *   Se for NULL, todos os nós apontados recursivamente a partir do nó corrente por pNoN e por pNoS, separadamente, são NULL ou apontam para NULL em pNoNE, ou todos os nós apontados recursivamente a partir do nó corrente por pNoE e por pNoO, separadamente, são NULL ou apontam para NULL em pNoNE.
-               *   Se não for NULL, pNoNE->pNoSO, pNoNE->pNoS->pNoO e pNoNE->pNoO->pNoS apontam todos para o nó corrente.
+               *   Se for NULL, todos os nÃ³s apontados recursivamente a partir do nÃ³ corrente por pNoN e por pNoS, separadamente, sÃ£o NULL ou apontam para NULL em pNoNE, ou todos os nÃ³s apontados recursivamente a partir do nÃ³ corrente por pNoE e por pNoO, separadamente, sÃ£o NULL ou apontam para NULL em pNoNE.
+               *   Se nÃ£o for NULL, pNoNE->pNoSO, pNoNE->pNoS->pNoO e pNoNE->pNoO->pNoS apontam todos para o nÃ³ corrente.
                *   */
 
          struct tgNoMatriz * pNoE ;
-               /* Ponteiro para o nó a este
+               /* Ponteiro para o nÃ³ a este
                *
                *$EED Assertivas estruturais
-               *   Se for NULL, pNoNE e pNoSE também apontam para NULL.
-               *   Se não for NULL, pNoE->pNoO aponta para o nó corrente.
+               *   Se for NULL, pNoNE e pNoSE tambÃ©m apontam para NULL.
+               *   Se nÃ£o for NULL, pNoE->pNoO aponta para o nÃ³ corrente.
                *   */
 
          struct tgNoMatriz * pNoSE ;
-               /* Ponteiro para o nó a sudeste
+               /* Ponteiro para o nÃ³ a sudeste
                *
                *$EED Assertivas estruturais
-               *   Se for NULL, todos os nós apontados recursivamente a partir do nó corrente por pNoN e por pNoS, separadamente, são NULL ou apontam para NULL em pNoSE, ou todos os nós apontados recursivamente a partir do nó corrente por pNoE e por pNoO, separadamente, são NULL ou apontam para NULL em pNoSE.
-               *   Se não for NULL, pNoSE->pNoNO, pNoSE->pNoN->pNoO e pNoSE->pNoO->pNoN apontam todos para o nó corrente.
+               *   Se for NULL, todos os nÃ³s apontados recursivamente a partir do nÃ³ corrente por pNoN e por pNoS, separadamente, sÃ£o NULL ou apontam para NULL em pNoSE, ou todos os nÃ³s apontados recursivamente a partir do nÃ³ corrente por pNoE e por pNoO, separadamente, sÃ£o NULL ou apontam para NULL em pNoSE.
+               *   Se nÃ£o for NULL, pNoSE->pNoNO, pNoSE->pNoN->pNoO e pNoSE->pNoO->pNoN apontam todos para o nÃ³ corrente.
                *   */
 
          struct tgNoMatriz * pNoS ;
-               /* Ponteiro para o nó a sul
+               /* Ponteiro para o nÃ³ a sul
                *
                *$EED Assertivas estruturais
-               *   Se for NULL, pNoSE e pNoSO também apontam para NULL.
-               *   Se não for NULL, pNoS->pNoN aponta para o nó corrente.
+               *   Se for NULL, pNoSE e pNoSO tambÃ©m apontam para NULL.
+               *   Se nÃ£o for NULL, pNoS->pNoN aponta para o nÃ³ corrente.
                *   */
 
          struct tgNoMatriz * pNoSO ;
-               /* Ponteiro para o nó a sudoeste
+               /* Ponteiro para o nÃ³ a sudoeste
                *
                *$EED Assertivas estruturais
-               *   Se for NULL, todos os nós apontados recursivamente a partir do nó corrente por pNoN e por pNoS, separadamente, são NULL ou apontam para NULL em pNoSO, ou todos os nós apontados recursivamente a partir do nó corrente por pNoE e por pNoO, separadamente, são NULL ou apontam para NULL em pNoSO.
-               *   Se não for NULL, pNoSO->pNoNE, pNoSO->pNoN->pNoE e pNoSO->pNoE->pNoN apontam todos para o nó corrente.
+               *   Se for NULL, todos os nÃ³s apontados recursivamente a partir do nÃ³ corrente por pNoN e por pNoS, separadamente, sÃ£o NULL ou apontam para NULL em pNoSO, ou todos os nÃ³s apontados recursivamente a partir do nÃ³ corrente por pNoE e por pNoO, separadamente, sÃ£o NULL ou apontam para NULL em pNoSO.
+               *   Se nÃ£o for NULL, pNoSO->pNoNE, pNoSO->pNoN->pNoE e pNoSO->pNoE->pNoN apontam todos para o nÃ³ corrente.
                *   */
 
          struct tgNoMatriz * pNoO ;
-               /* Ponteiro para o nó a oeste
+               /* Ponteiro para o nÃ³ a oeste
                *
                *$EED Assertivas estruturais
-               *   Se for NULL, pNoSO e pNoNO também apontam para NULL.
-               *   Se não for NULL, pNoO->pNoE aponta para o nó corrente.
+               *   Se for NULL, pNoSO e pNoNO tambÃ©m apontam para NULL.
+               *   Se nÃ£o for NULL, pNoO->pNoE aponta para o nÃ³ corrente.
                *   */
 
          struct tgNoMatriz * pNoNO ;
-               /* Ponteiro para o nó a noroeste
+               /* Ponteiro para o nÃ³ a noroeste
                *
                *$EED Assertivas estruturais
-               *   Se for NULL, todos os nós apontados recursivamente a partir do nó corrente por pNoN e por pNoS, separadamente, são NULL ou apontam para NULL em pNoNO, ou todos os nós apontados recursivamente a partir do nó corrente por pNoE e por pNoO, separadamente, são NULL ou apontam para NULL em pNoNO.
-               *   Se não for NULL, pNoNO->pNoSE, pNoNO->pNoS->pNoE e pNoNO->pNoE->pNoS apontam todos para o nó corrente.
+               *   Se for NULL, todos os nÃ³s apontados recursivamente a partir do nÃ³ corrente por pNoN e por pNoS, separadamente, sÃ£o NULL ou apontam para NULL em pNoNO, ou todos os nÃ³s apontados recursivamente a partir do nÃ³ corrente por pNoE e por pNoO, separadamente, sÃ£o NULL ou apontam para NULL em pNoNO.
+               *   Se nÃ£o for NULL, pNoNO->pNoSE, pNoNO->pNoS->pNoE e pNoNO->pNoE->pNoS apontam todos para o nÃ³ corrente.
                *   */
 
          struct tgNoMatriz * pNoN ;
-               /* Ponteiro para o nó a norte
+               /* Ponteiro para o nÃ³ a norte
                *
                *$EED Assertivas estruturais
-               *   Se for NULL, pNoNO e pNoNE também apontam para NULL.
-               *   Se não for NULL, pNoN->pNoS aponta para o nó corrente.
+               *   Se for NULL, pNoNO e pNoNE tambÃ©m apontam para NULL.
+               *   Se nÃ£o for NULL, pNoN->pNoS aponta para o nÃ³ corrente.
                *   */
    } tpNoMatriz ;
 
 /***********************************************************************
 *
-*  $TC Tipo de dados: Mat Descritor da cabeça de uma matriz quadrada
+*  $TC Tipo de dados: Mat Descritor da cabeÃ§a de uma matriz quadrada
 *
 *
-*  $ED Descrição do tipo
-*     A cabe‡a da matriz é o ponto de acesso para uma determinada matriz quadrada.
-*     Por intermédio da referência para o nó corrente, coordenadas latitudinais e longitudinais
+*  $ED DescriÃ§Ã£o do tipo
+*     A cabeâ€¡a da matriz Ã© o ponto de acesso para uma determinada matriz quadrada.
+*     Por intermÃ©dio da referÃªncia para o nÃ³ corrente, coordenadas latitudinais e longitudinais
 *     pai pode-se navegar a matriz.
 *
 ***********************************************************************/
 
-   typedef struct tgMatriz {
+   struct tgMatriz {
 
          tpNoMatriz * pNoRaiz ;
-               /* Ponteiro para o nó 1,1 da matriz */
+               /* Ponteiro para o nÃ³ 1 x 1 da matriz */
 
          tpNoMatriz * pNoCorr ;
-               /* Ponteiro para o nó corrente da matriz */
+               /* Ponteiro para o nÃ³ corrente da matriz */
 
 		 int dimensao;
-		      /* Guarda a dimensão n da matriz quadrada n x n */
+		      /* Guarda a dimensÃ£o n da matriz quadrada n x n */
 
 		 int i;
-		      /* Guarda a coordanada longitudinal do nó apontado por pNoCorr na matriz */
+		      /* Guarda a coordanada longitudinal do nÃ³ apontado por pNoCorr na matriz */
 
 		 int j;
-		      /* Guarda a coordenada latitudinal do nó apontado por pNoCorr na matriz */
+		      /* Guarda a coordenada latitudinal do nÃ³ apontado por pNoCorr na matriz */
 
-   } tpMatriz ;
+   };
 
 
-/***** Protótipos das funções encapuladas no módulo *****/
+/***** ProtÃ³tipos das funÃ§Ãµes encapuladas no mÃ³dulo *****/
 /*
    static tpNoMatriz * CriarNo( char ValorParm ) ;
-
    static MAT_tpCondRet CriarNoRaiz( char ValorParm ) ;
-
    static void DestroiArvore( tpNoMatriz * pNo ) ;
 /*
-/*****  Código das funções exportadas pelo módulo  *****/
+/*****  CÃ³digo das funÃ§Ãµes exportadas pelo mÃ³dulo  *****/
 
 /***************************************************************************
 *
-*  Função: MAT Criar matriz
+*  FunÃ§Ã£o: MAT Criar matriz
 *  ****/
 
    MAT_tpCondRet MAT_CriarMatriz( int n , tpMatriz ** pMatriz )
    {
-	   if ( n < 0 ) // n não pode ser negativo - entrada invalida
+	   if ( n < 0 ) // n nÃ£o pode ser negativo - entrada invalida
 	   {}
 	   else
 	   {
@@ -169,10 +167,10 @@
 			   return MAT_CondRetFaltouMemoria ;
 		   }
 		   if ( n == 0 )
-			   // caso a dimensao fornecida seja 0 é criada apenas a cabeça com uma matriz vazia (sem uma matriz)
+			   // caso a dimensao fornecida seja 0 Ã© criada apenas a cabeÃ§a com uma matriz vazia (sem uma matriz)
 		   {
-			   (*pMatriz)->CoorI = 0;
-			   (*pMatriz)->CoorJ = 0;
+			   (*pMatriz)->i = 0;
+			   (*pMatriz)->j = 0;
 			   (*pMatriz)->dimensao = 0;
 			   (*pMatriz)->pNoCorr = NULL;
 			   (*pMatriz)->pNoRaiz = NULL;
@@ -183,7 +181,7 @@
 			   pNoMatriz = ( tpNoMatriz * ) malloc( sizeof( tpNoMatriz )) ;
 			   if ( pNoMatriz == NULL )
 			   {
-				   MAT_DestruirMatriz( pMatriz );
+				   MAT_DestruirMatriz( *pMatriz );
 				   return MAT_CondRetFaltouMemoria ;
 			   }
 			   (*pMatriz)->pNoRaiz = pNoMatriz ;
@@ -200,7 +198,7 @@
 				   pNoMatriz = pNoMatriz->pNoS;
 				   if ( pNoMatriz == NULL )
 				   {
-					   MAT_DestruirMatriz( pMatriz );
+					   MAT_DestruirMatriz( *pMatriz );
 					   return MAT_CondRetFaltouMemoria ;
 				   }
 				   pNoMatriz->conteudo = NULL ;
@@ -222,7 +220,7 @@
 				   pNoMatriz = ( tpNoMatriz * ) malloc( sizeof( tpNoMatriz )) ;
 				   if ( pNoMatriz == NULL )
 				   {
-					   MAT_DestruirMatriz( pMatriz );
+					   MAT_DestruirMatriz( *pMatriz );
 					   return MAT_CondRetFaltouMemoria ;
 				   }
 				   (*pMatriz)->pNoCorr->pNoE = pNoMatriz;
@@ -240,7 +238,7 @@
 					   {
 						   pNoMatriz->pNoE->pNoS = NULL;
 						   (*pMatriz)->pNoCorr->pNoE = NULL;
-						   MAT_DestruirMatriz( pMatriz );
+						   MAT_DestruirMatriz( *pMatriz );
 						   return MAT_CondRetFaltouMemoria ;
 					   }
 					   pNoMatriz->pNoE->pNoSO = pNoMatriz->pNoS;
@@ -262,7 +260,7 @@
 			   pNoMatriz = ( tpNoMatriz * ) malloc( sizeof( tpNoMatriz )) ;
 			   if ( pNoMatriz == NULL )
 			   {
-				   MAT_DestruirMatriz( pMatriz );
+				   MAT_DestruirMatriz( *pMatriz );
 				   return MAT_CondRetFaltouMemoria ;
 			   }
 			   pNoMatriz->pNoE = NULL;
@@ -280,7 +278,7 @@
 				   if ( pNoMatriz->pNoSE == NULL )
 				   {
 					   pNoMatriz->pNoE->pNoS = NULL;
-					   MAT_DestruirMatriz( pMatriz );
+					   MAT_DestruirMatriz( *pMatriz );
 					   return MAT_CondRetFaltouMemoria ;
 				   }
 				   pNoMatriz->pNoE->pNoNE = NULL;
@@ -309,24 +307,22 @@
 				 
 /***************************************************************************
 *
-*  Função: MAT Destruir matriz
+*  FunÃ§Ã£o: MAT Destruir matriz
 *  ****/
 
-  void MAT_DestruirMatriz( tpMatriz ** pMatriz )
+  void MAT_DestruirMatriz( tpMatriz * pMatriz )
    {
 	   if ( pMatriz == NULL )
-	   {/* entrada sem conteúdo */}
-	   else if ( *pMatriz == NULL )
-	   {/* entrada sem conteúdo */}
+	   {/*entrada sem conteudo*/}
 	   else
 	   {
-		   if ( (*pMatriz)->pNoRaiz != NULL )
+		   if ( pMatriz->pNoRaiz != NULL )
 		   {
 			   tpNoMatriz * pNoMatriz;
-			   while ( (*pMatriz)->pNoRaiz != NULL )
+			   while ( pMatriz->pNoRaiz != NULL )
 			   {
-				   pNoMatriz = (*pMatriz)->pNoRaiz;
-				   (*pMatriz)->pNoRaiz = pNoMatriz->pNoE;
+				   pNoMatriz = pMatriz->pNoRaiz;
+				   pMatriz->pNoRaiz = pNoMatriz->pNoE;
 				   while ( pNoMatriz->pNoS != NULL )
 				   {
 					   pNoMatriz = pNoMatriz->pNoS;
@@ -335,24 +331,24 @@
 				   free( pNoMatriz );
 			   }
 		   }
-		   free( *pMatriz );
+		   free( pMatriz );
 	   }
   }
 
 /***************************************************************************
 *
-*  Função: MAT GoTo 
+*  FunÃ§Ã£o: MAT Goto 
 *  ****/
 
-MAT_tpCondRet MAT_GoTo( tpMatriz * pMatriz , int i, int j)
+MAT_tpCondRet MAT_Goto( tpMatriz * pMatriz , int i, int j)
 {
 	tpNoMatriz* aux;
 	int difi,difj;
 
 	if ( pMatriz == NULL)
-		return MAT_CondRetMatrizNaoexiste ;
-	if ( i > tpMatriz->dimensao || j > tpMatriz->dimensao )
-		return MAT_CondRetMatrizNaoPossuiNo ;
+		return MAT_CondRetMatrizNaoExiste ;
+	if (( i > (pMatriz->dimensao) )||( j > (pMatriz->dimensao)) )
+		return MAT_CondRetNaoPossuiNo ;
 	difi = pMatriz->i - i ;
 	difj = pMatriz->j - j ;
 
@@ -390,10 +386,10 @@ MAT_tpCondRet MAT_GoTo( tpMatriz * pMatriz , int i, int j)
 
 /***************************************************************************
 *
-*  Função: MAT ObterListaCorr 
+*  FunÃ§Ã£o: MAT ObterContCorr 
 *  ****/
 
-MAT_tpCondRet MAT_ObterListaCorr(  tpMatriz * pMatriz, void ** ValorParm )
+MAT_tpCondRet MAT_ObterContCorr(  tpMatriz * pMatriz, void * ValorParm )
 {
 	if ( pMatriz == NULL )
 		return MAT_CondRetMatrizNaoExiste;
@@ -405,10 +401,10 @@ MAT_tpCondRet MAT_ObterListaCorr(  tpMatriz * pMatriz, void ** ValorParm )
 
 /***************************************************************************
 *
-*  Função: MAT InsereLista 
+*  FunÃ§Ã£o: MAT InsereLista 
 *  ****/
 
-MAT_tpCondRet MAT_InsereLista( tpMatriz * pMatriz, void ** ValorParm )
+MAT_tpCondRet MAT_InsereLista( tpMatriz * pMatriz, void * ValorParm )
 {
 	if ( pMatriz == NULL )
 		return MAT_CondRetMatrizNaoExiste;
