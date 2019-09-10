@@ -27,7 +27,13 @@
 *     Comandos de teste espec�ficos para testar o m�dulo �rvore:
 *
 *     "=criar"      - chama a fun��o MAT_CriarMatriz( )
-*     "=ipara"		- chama a função MAT_GoTo()
+*     "=irnorte"	- chama a fun��o MAT_IrNoNorte( )
+*     "=irsul"		- chama a fun��o MAT_IrNoSul( )
+*     "=iroest"		- chama a fun��o MAT_IrNoOeste( )
+*     "=itleste"	- chama a fun��o MAT_IrNoLeste( )
+*     "=irsudoe"	- chama a fun��o MAT_IrNoSudoeste( )
+*     "=irnoroe"	- chama a fun��o MAT_IrNoNoroeste( )
+*     "=irnorde"	- chama a fun��o MAT_IrNoNordeste( )
 *     "=obter" <Char>
 *                   - chama a fun��o MAT_ObterListaCorr( ) e compara
 *                     o valor retornado com o valor <Char>
@@ -49,6 +55,14 @@
 
 #define     CRIAR_MAT_CMD       "=criar"
 #define		IR_PARA_CMD			"=irpara"
+#define     IR_NORTE_CMD        "=irnorte"
+#define     IR_SUL_CMD          "=irsul"
+#define     IR_OESTE_CMD        "=iroest"
+#define     IR_LESTE_CMD        "=irleste"
+#define		IR_SUDOE_CMD		"=irsudoe"
+#define     IR_NOROE_CMD		"=irnoroe"
+#define		IR_NORDE_CMD		"=irnorde"
+#define		IR_SUDE_CMD			"=irsude"
 #define     OBTER_VAL_CMD       "=obter"
 #define     DESTROI_CMD         "=destruir"
 
@@ -65,11 +79,11 @@ static char matAtual = 0; /* 0 a 9, testa até 10 matrizes simultâneas */
 
 /***********************************************************************
 *
-*  $FC Fun��o: TMAT Efetuar opera��es de teste espec�ficas para Matriz
+*  $FC Fun��o: TMAT Efetuar opera��es de teste espec�ficas para �rvore
 *
 *  $ED Descri��o da fun��o
 *     Efetua os diversos comandos de teste espec�ficos para o m�dulo
-*     matriz sendo testado.
+*     �rvore sendo testado.
 *
 *  $EP Par�metros
 *     $P ComandoTeste - String contendo o comando
@@ -94,7 +108,7 @@ static char matAtual = 0; /* 0 a 9, testa até 10 matrizes simultâneas */
 
       TST_tpCondRet Ret ;
 
-      /* Testar MAT Criar Matriz */
+      /* Testar MAT Criar Matriz*/
 
          if ( strcmp( ComandoTeste , CRIAR_MAT_CMD ) == 0 )
          {
@@ -106,16 +120,59 @@ static char matAtual = 0; /* 0 a 9, testa até 10 matrizes simultâneas */
                return TST_CondRetParm ;
             } /* if */
 
-            CondRetObtido = MAT_CriarArvore( ) ;
+            CondRetObtido = MAT_CriarMatriz( ) ;
 
             return TST_CompararInt( CondRetEsperada , CondRetObtido ,
-                                    "Retorno errado ao criar Matriz." );
+                                    "Retorno errado ao criar matriz." );
 
-         } /* fim ativa: Testar ARV Criar �rvore */
+         } /* fim ativa: Testar MAT CriarMatriz */
 
-		 /* Testar Mat goto */
 
-		 else if ( strcmp( ComandoTeste, IR_PARA_CMD ) == 0 ){
+		  /* Testar MAT Goto  */
+
+         else if ( strcmp( ComandoTeste , IR_PARA_CMD ) == 0 )
+         {
+
+            NumLidos = LER_LerParametros( "i", "j" ,
+                               &CondRetEsperada ) ;
+            if ( NumLidos != 1 )
+            {
+               return TST_CondRetParm ;
+            } /* if */
+
+            CondRetObtido = MATMAT_Goto( );
+
+            return TST_CompararInt( CondRetEsperada , CondRetObtido ,
+                                    "Retorno errado ao ir para." );
+
+         } /* fim ativa: Testar MAT Goto */
+
+
+      /* Testar MAT Ir para Norte */
+
+         else if ( strcmp( ComandoTeste , IR_NORTE_CMD ) == 0 )
+         {
+
+            NumLidos = LER_LerParametros( "i" ,
+                               &CondRetEsperada ) ;
+            if ( NumLidos != 1 )
+            {
+               return TST_CondRetParm ;
+            } /* if */
+
+            CondRetObtido = MAT_IrNoNorte( ) ;
+
+            return TST_CompararInt( CondRetEsperada , CondRetObtido ,
+                                    "Retorno errado ao ir para Norte." );
+
+         } /* fim ativa: Testar MAT Ir para Norte */
+
+
+
+		 /* Testar MAT Ir para Sul */
+
+         else if ( strcmp( ComandoTeste , IR_SUL_CMD ) == 0 )
+         {
 
             NumLidos = LER_LerParametros( "i" ,
                                &CondRetEsperada ) ;
@@ -127,12 +184,133 @@ static char matAtual = 0; /* 0 a 9, testa até 10 matrizes simultâneas */
             CondRetObtido = MAT_IrNoSul( ) ;
 
             return TST_CompararInt( CondRetEsperada , CondRetObtido ,
-                                    "Retorno errado ao ir para o nó." );
+                                    "Retorno errado ao ir para sul." );
 
-		 }
+         } /* fim ativa: Testar MAT Ir para Sul */
 
-     
-      /* Testar ARV Obter valor corrente */
+
+
+		 /* Testar MAT Ir para Oeste */
+
+         else if ( strcmp( ComandoTeste , IR_OESTE_CMD ) == 0 )
+         {
+
+            NumLidos = LER_LerParametros( "i" ,
+                               &CondRetEsperada ) ;
+            if ( NumLidos != 1 )
+            {
+               return TST_CondRetParm ;
+            } /* if */
+
+            CondRetObtido = MAT_IrNoOeste( ) ;
+
+            return TST_CompararInt( CondRetEsperada , CondRetObtido ,
+                                    "Retorno errado ao ir para Oeste." );
+
+         } /* fim ativa: Testar MAT Ir para Oeste */
+
+
+      /* Testar MAT Ir para Leste */
+
+         else if ( strcmp( ComandoTeste , IR_LESTE_CMD ) == 0 )
+         {
+
+            NumLidos = LER_LerParametros( "i" ,
+                               &CondRetEsperada ) ;
+            if ( NumLidos != 1 )
+            {
+               return TST_CondRetParm ;
+            } /* if */
+
+            CondRetObtido = MAT_IrNoLeste( ) ;
+
+            return TST_CompararInt( CondRetEsperada , CondRetObtido ,
+                                    "Retorno errado ao ir Leste." );
+
+         } /* fim ativa: Testar MAT Ir para Leste */
+
+
+		 /* Testar MAT Ir para Sudoeste */
+
+         else if ( strcmp( ComandoTeste , IR_SUDOE_CMD ) == 0 )
+         {
+
+            NumLidos = LER_LerParametros( "i" ,
+                               &CondRetEsperada ) ;
+            if ( NumLidos != 1 )
+            {
+               return TST_CondRetParm ;
+            } /* if */
+
+            CondRetObtido = MAT_IrNoSudoeste( ) ;
+
+            return TST_CompararInt( CondRetEsperada , CondRetObtido ,
+                                    "Retorno errado ao ir Sudoeste." );
+
+         } /* fim ativa: Testar MAT Ir para Sudoeste */
+
+
+		 /* Testar MAT Ir para Noroeste */
+
+         else if ( strcmp( ComandoTeste , IR_NOROE_CMD ) == 0 )
+         {
+
+            NumLidos = LER_LerParametros( "i" ,
+                               &CondRetEsperada ) ;
+            if ( NumLidos != 1 )
+            {
+               return TST_CondRetParm ;
+            } /* if */
+
+            CondRetObtido = MAT_IrNoNoroeste( ) ;
+
+            return TST_CompararInt( CondRetEsperada , CondRetObtido ,
+                                    "Retorno errado ao ir Noroeste." );
+
+         } /* fim ativa: Testar MAT Ir para Noroeste */
+
+
+		 /* Testar MAT Ir para Nordeste */
+
+         else if ( strcmp( ComandoTeste , IR_NORDE_CMD ) == 0 )
+         {
+
+            NumLidos = LER_LerParametros( "i" ,
+                               &CondRetEsperada ) ;
+            if ( NumLidos != 1 )
+            {
+               return TST_CondRetParm ;
+            } /* if */
+
+            CondRetObtido = MAT_IrNoNordeste( ) ;
+
+            return TST_CompararInt( CondRetEsperada , CondRetObtido ,
+                                    "Retorno errado ao ir Nordeste." );
+
+         } /* fim ativa: Testar MAT Ir para Nordeste */
+
+
+		 /* Testar MAT Ir para Sudeste */
+
+         else if ( strcmp( ComandoTeste , IR_SUDE_CMD ) == 0 )
+         {
+
+            NumLidos = LER_LerParametros( "i" ,
+                               &CondRetEsperada ) ;
+            if ( NumLidos != 1 )
+            {
+               return TST_CondRetParm ;
+            } /* if */
+
+            CondRetObtido = MAT_IrNoSudeste( ) ;
+
+            return TST_CompararInt( CondRetEsperada , CondRetObtido ,
+                                    "Retorno errado ao ir Sudeste." );
+
+         } /* fim ativa: Testar MAT Ir para Sudeste */
+
+
+      /* Testar MAT Obter valor corrente */
 
          else if ( strcmp( ComandoTeste , OBTER_VAL_CMD ) == 0 )
          {
@@ -144,7 +322,7 @@ static char matAtual = 0; /* 0 a 9, testa até 10 matrizes simultâneas */
                return TST_CondRetParm ;
             } /* if */
 
-            CondRetObtido = MAT_ObterListaCorr( &ValorObtido ) ;
+            CondRetObtido = MAT_ObterContCorr( &ValorObtido ) ;
 
             Ret = TST_CompararInt( CondRetEsperada , CondRetObtido ,
                                    "Retorno errado ao obter valor corrente." );
@@ -159,7 +337,6 @@ static char matAtual = 0; /* 0 a 9, testa até 10 matrizes simultâneas */
 
          } /* fim ativa: Testar MAT Obter valor corrente */
 
-
       /* Testar MAT Destruir Matriz */
 
          else if ( strcmp( ComandoTeste , DESTROI_CMD ) == 0 )
@@ -173,7 +350,7 @@ static char matAtual = 0; /* 0 a 9, testa até 10 matrizes simultâneas */
 
       return TST_CondRetNaoConhec ;
 
-   } /* Fim fun��o: TARV Efetuar opera��es de teste espec�ficas para Matriz */
+   } /* Fim fun��o: TARV Efetuar opera��es de teste espec�ficas para �rvore */
 
 /********** Fim do m�dulo de implementa��o: M�dulo de teste espec�fico **********/
 
