@@ -23,7 +23,7 @@
 *  $ED Descrição do módulo
 *     Este módulo implementa um conjunto simples de funções para criar e
 *     explorar matrizes n x n.
-*     A matriz possui uma cabeça que contém uma referência para o nó 0 x 0 da
+*     A matriz possui uma cabeça que contém uma referência para o nó 1 x 1 da
 *     matriz e outra para um nó corrente da matriz.
 *     A cada momento o módulo admite no máximo uma única matriz.
 *     Ao iniciar a execução do programa não existe matriz.
@@ -80,12 +80,11 @@
 *  $FC Função: MAT Criar matriz
 *
 *  $EP Parâmetros
-*     $P pMatriz - endereço do ponteiro para a cabeça da árvore a ser manipulada.
+*     $P pMatriz - endereço do ponteiro para a cabeça da matriz a ser manipulada.
 *	  $P n - dimensão da matriz
 *
 *  $ED Descrição da função
 *     Cria uma nova matriz n x n.
-*     Caso já exista uma matriz, esta será destruída.
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
@@ -101,7 +100,7 @@
 *  $FC Função: MAT Destruir matriz
 *
 *  $EP Parâmetros
-*    $P pArvore - endereço do ponteiro para a cabeça da matriz a ser manipulada.
+*    $P pMatriz - endereço da cabeça da matriz a ser manipulada.
 *
 *  $ED Descrição da função
 *     Destrói o corpo e a cabeça da matriz, anulando a matriz corrente.
@@ -109,7 +108,7 @@
 *
 ***********************************************************************/
 
-   void MAT_DestruirMatriz( tpMatriz ** pMatriz ) ;
+   void MAT_DestruirMatriz( tpMatriz * pMatriz ) ;
 
 /***********************************************************************
 *
@@ -125,18 +124,18 @@
 *     MAT_CondRetMatrizNaoExiste
 *     MAT_CondRetNaoPossuiNo   - não existe tal nó
 *
+*
 ***********************************************************************/
 
-	MAT_tpCondRet MAT_GoTo( tpMatriz * pMatriz, int i, int j ) ;
+	MAT_tpCondRet MAT_Goto( tpMatriz * pMatriz, int i, int j ) ;
 
 /***********************************************************************
 *
-*  $FC Função: MAT Obter lista corrente
+*  $FC Função: MAT Obter conteudo corrente
 *
 *  $EP Parâmetros
-*     $P ValorParm - O parâmetro que receberá o endereço da lista contida no nó.
-*                    Este parâmetro é passado por referência.
-*     $P pArvore - ponteiro para a cabeça da matriz a ser manipulada.
+*     $P ValorParm - O parâmetro que receberá o conteudo do nó.
+*     $P pMatriz - endereço da cabeça da matriz a ser manipulada.
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
@@ -145,16 +144,16 @@
 *
 ***********************************************************************/
 
-   MAT_tpCondRet MAT_ObterListaCorr( void ** ValorParm ) ;
+   MAT_tpCondRet MAT_ObterContCorr( tpMatriz * pMatriz , void * ValorParm ) ;
 
 /***********************************************************************
 *
 *  $FC Função: MAT Insere Lista
 *
 *  $EP Parâmetros
-*     $P ValorParm - O parâmetro que receberá o endereço da lista á ser inserida no nó.
+*     $P ValorParm - O valor ser inserido no nó.
 *                    
-*     $P pMatriz - ponteiro para a cabeça da matriz a ser manipulada.
+*     $P pMatriz - endereço da cabeça da matriz a ser manipulada.
 *
 *  $FV Valor retornado
 *     MAT_CondRetOK
@@ -163,7 +162,7 @@
 *
 ***********************************************************************/
 
-   MAT_tpCondRet MAT_InsereLista( tpMatriz * pMatriz, void ** ValorParm );
+   MAT_tpCondRet MAT_InsereLista( tpMatriz * pMatriz, void * ValorParm );
 
 #undef MATRIZ_EXT
 
