@@ -63,7 +63,7 @@ static tpMatriz * pMatriz[] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
 
 static int matAtual = 0; /* 0 a 9, testa até 10 matrizes simultâneas */
 
-static void ExcluirValor( void * pValor ) ;
+static void DestruirValor( void * pValor ) ;
 
 /*****  Código das funções exportadas pelo módulo  *****/
 
@@ -206,10 +206,9 @@ static void ExcluirValor( void * pValor ) ;
             } /* if */
 
             ListaChar =
-                 LIS_CriarLista( ExcluirValor ) ;
+                 LIS_CriarLista( DestruirValor ) ;
 
-            return TST_CompararInt( CondRetEsperada , CondRetObtido ,
-                                    "Retorno errado ao criar lista." );
+            return TST_CondRetOK
 
          } /* fim ativa: CriarLista */
 
@@ -227,7 +226,7 @@ static void ExcluirValor( void * pValor ) ;
 
             matAtual = NumMat ;
 
-            return TST_CondRetNaoConhec ;
+            return TST_CondRetOK ;
                                     
 
          } /* fim ativa: mudar matriz de teste */
@@ -237,5 +236,21 @@ static void ExcluirValor( void * pValor ) ;
       return TST_CondRetNaoConhec ;
 
    } /* Fim função: TMAT Efetuar operações de teste específicas para matriz */
+
+   /*****  Código das funções encapsuladas no módulo  *****/
+
+
+/***********************************************************************
+*
+*  $FC Função: TLIS -Destruir valor
+*
+***********************************************************************/
+
+   void DestruirValor( void * pValor )
+   {
+
+      free( pValor ) ;
+
+   } /* Fim função: TLIS -Destruir valor */
 
 /********** Fim do módulo de implementação: Módulo de teste específico **********/
