@@ -208,7 +208,7 @@ static void DestruirValor( void * pValor ) ;
             ListaChar =
                  LIS_CriarLista( DestruirValor ) ;
 
-            return TST_CondRetOK
+            return TST_CondRetOK ;
 
          } /* fim ativa: CriarLista */
 
