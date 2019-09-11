@@ -9,7 +9,7 @@
 *
 *  Projeto: Disciplinas INF 1628 / 1301
 *  Gestor:  DI/PUC-Rio
-*  Autores: avs - Arndt von Staa
+*  Autores: mfv - Miguel Fagundes Vuori
 *
 *  $HA Histórico de evolução:
 *     Versão  Autores    Data     Observações
@@ -342,7 +342,6 @@
 
 MAT_tpCondRet MAT_Goto( tpMatriz * pMatriz , int i, int j)
 {
-	tpNoMatriz* aux;
 	int difi,difj;
 
 	if ( pMatriz == NULL)
@@ -395,86 +394,7 @@ MAT_tpCondRet MAT_ObterContCorr(  tpMatriz * pMatriz, void * ValorParm )
 		return MAT_CondRetMatrizNaoExiste;
 	if ( pMatriz->pNoRaiz == NULL )
 		return MAT_CondRetMatrizVazia;
-	if ( pMatriz->pNoCorr->pNoO == NULL )
-		return MAT_CondRetNaoPossueNo;
-	pMatriz->pNoCorr = pMatriz->pNoCorr->pNoO;
-	return MAT_CondRetOK;
-}
-MAT_tpCondRet MAT_IrNoNorte( tpMatriz * pMatriz ) ;
-{
-	if ( pMatriz == NULL )
-		return MAT_CondRetMatrizNaoExiste;
-	if ( pMatriz->pNoRaiz == NULL )
-		return MAT_CondRetMatrizVazia;
-	if ( pMatriz->pNoCorr->pNoN == NULL )
-		return MAT_CondRetNaoPossueNo;
-	pMatriz->pNoCorr = pMatriz->pNoCorr->pNoN;
-	return MAT_CondRetOK;
-}
-MAT_tpCondRet MAT_IrNoLeste( tpMatriz * pMatriz ) ;
-{
-	if ( pMatriz == NULL )
-		return MAT_CondRetMatrizNaoExiste;
-	if ( pMatriz->pNoRaiz == NULL )
-		return MAT_CondRetMatrizVazia;
-	if ( pMatriz->pNoCorr->pNoE == NULL )
-		return MAT_CondRetNaoPossueNo;
-	pMatriz->pNoCorr = pMatriz->pNoCorr->pNoE;
-	return MAT_CondRetOK;
-}
-MAT_tpCondRet MAT_IrNoSul( tpMatriz * pMatriz ) ;
-{
-	if ( pMatriz == NULL )
-		return MAT_CondRetMatrizNaoExiste;
-	if ( pMatriz->pNoRaiz == NULL )
-		return MAT_CondRetMatrizVazia;
-	if ( pMatriz->pNoCorr->pNoS == NULL )
-		return MAT_CondRetNaoPossueNo;
-	pMatriz->pNoCorr = pMatriz->pNoCorr->pNoS;
-	return MAT_CondRetOK;
-}
-MAT_tpCondRet MAT_IrNoSudoeste( tpMatriz * pMatriz ) ;
-{
-	if ( pMatriz == NULL )
-		return MAT_CondRetMatrizNaoExiste;
-	if ( pMatriz->pNoRaiz == NULL )
-		return MAT_CondRetMatrizVazia;
-	if ( pMatriz->pNoCorr->pNoSO == NULL )
-		return MAT_CondRetNaoPossueNo;
-	pMatriz->pNoCorr = pMatriz->pNoCorr->pNoSO;
-	return MAT_CondRetOK;
-}
-MAT_tpCondRet MAT_IrNoNoroeste( tpMatriz * pMatriz ) ;
-{
-	if ( pMatriz == NULL )
-		return MAT_CondRetMatrizNaoExiste;
-	if ( pMatriz->pNoRaiz == NULL )
-		return MAT_CondRetMatrizVazia;
-	if ( pMatriz->pNoCorr->pNoNO == NULL )
-		return MAT_CondRetNaoPossueNo;
-	pMatriz->pNoCorr = pMatriz->pNoCorr->pNoNO;
-	return MAT_CondRetOK;
-}
-MAT_tpCondRet MAT_IrNoNordeste( tpMatriz * pMatriz ) ;
-{
-	if ( pMatriz == NULL )
-		return MAT_CondRetMatrizNaoExiste;
-	if ( pMatriz->pNoRaiz == NULL )
-		return MAT_CondRetMatrizVazia;
-	if ( pMatriz->pNoCorr->pNoNE == NULL )
-		return MAT_CondRetNaoPossueNo;
-	pMatriz->pNoCorr = pMatriz->pNoCorr->pNoNE;
-2	return MAT_CondRetOK;
-}
-MAT_tpCondRet MAT_IrNoSudeste( tpMatriz * pMatriz ) ;
-{
-	if ( pMatriz == NULL )
-		return MAT_CondRetMatrizNaoExiste;
-	if ( pMatriz->pNoRaiz == NULL )
-		return MAT_CondRetMatrizVazia;
-	if ( pMatriz->pNoCorr->pNoSE == NULL )
-		return MAT_CondRetNaoPossueNo;
-	pMatriz->pNoCorr = pMatriz->pNoCorr->pNoSE;
+	ValorParm = pMatriz->pNoCorr->conteudo;
 	return MAT_CondRetOK;
 }
 
@@ -489,7 +409,7 @@ MAT_tpCondRet MAT_InsereLista( tpMatriz * pMatriz, void * ValorParm )
 		return MAT_CondRetMatrizNaoExiste;
 	if ( pMatriz->pNoRaiz == NULL )
 		return MAT_CondRetMatrizVazia;
-	ValorParm = pMatriz->pNoCorr->conteudo;
+
+	pMatriz->pNoCorr->conteudo = ValorParm;
 	return MAT_CondRetOK;
 }
-// na fun��o deve ser alterado no header file o parametro "char **" para "void **" 
